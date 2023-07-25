@@ -4,42 +4,35 @@
 
 깃 커밋 메세지 작성
 
-1. .gitmessage 생성과 등록, 그리고 .gitignore를 생성합니다.
-
-```zsh
-source ./src/git_init
-```
-
-2. 패키지를 설치합니다.
-
-```zsh
-npm install
-```
-
 ## 작업 설치 프로그램
 
-1. npm Package 설치
+1. .gitmessage 생성과 등록, 그리고 .gitignore를 생성합니다.
+
+2. npm Package 설치
 
 ```zsh
    npm init -y
-   npm install express jsonwebtoken cookie-parser
+   npm install
+   npm install express
+   npm install jsonwebtoken
+   npm install cookie-parser
 ```
 
-2. 프리티어 설치 / 실행
+3. 프리티어 설치 / 실행
 
 ```zsh
    npm i prettier -D
    npm run prettify
 ```
 
-3. 노드몬 포트 설치 / 실행
+4. 노드몬 포트 설치 / 실행
 
 ```zsh
    npm i dotenv
    npm run start
 ```
 
-4. 데이터 베이스 생성 / 삭제 / 맵핑
+5. 데이터 베이스 생성 / 삭제 / 맵핑
 
 ```zsh
    npx sequelize db:create
