@@ -1,22 +1,17 @@
 # sequelize init 또는 db:drop 하고 난 뒤에 해당 source를 실행하면 됩니다.
 npx sequelize db:create --env development
-# 고객
-npx sequelize model:generate --name Client --attributes email:string,password:string,name:string,address:string,phone_num:integer,client_image:string,introduction:string,point:integer
-# 리뷰
-npx sequelize model:generate --name Review --attributes Client_id:integer,Order_id:integer,Restaurant_id:integer,rating:integer,content:string
-# 사장
-npx sequelize model:generate --name Owner --attributes email:string,password:string,name:string,owner_name:string,owner_number:integer,point:integer
-# 주문
-npx sequelize model:generate --name Order --attributes Restaurant_id:integer,Client_id:integer,status:integer
-# 주문 상세
-npx sequelize model:generate --name OrderDetail --attributes Order_id:integer,Menu_id:integer,count:integer
-# 메뉴
-npx sequelize model:generate --name Menu --attributes Restaurant_id:string,name:string,menu_image:string,price:string,sold_out:boolean
-# 음식점
-npx sequelize model:generate --name Restaurant --attributes Owner_id:integer,name:string,address:string,phone_num:integer,biz_hours:string,category:string
-# 리프레시 토큰
-npx sequelize model:generate --name RefreshToken --attributes refresh_token:string,user_id:integer
-# 프로필 이미지
-npx sequelize model:generate --name ProfileImage --attributes imageUrl:string,Client_id:integer
-# 메뉴 이미지
-npx sequelize model:generate --name MenuImage --attributes imageUrl:string,Menu_id:integer
+
+# option (옵션)  
+npx sequelize model:generate --name Option --attributes extra_price:number,shot_price:number,hot:boolean 
+
+# item (상품)
+npx sequelize model:generate --name Item --attributes Option_id:integer,name:string,price:number,type:ENUM,amount:number
+
+# order_item (주문 상품)
+npx sequelize model:generate --name Order_item --attributes Item_id:integer,amount:number,state:number
+
+# item_order_customer (주문한 고객)
+npx sequelize model:generate --name Item_order_customer --attributes Item_id:integer,Order_customer_id:integer,amount:number
+
+# order_customer (주문한 고객)
+npx sequelize model:generate --name Order_customer --attributes state:number

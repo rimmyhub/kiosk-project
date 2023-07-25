@@ -32,12 +32,22 @@
    npm run start
 ```
 
-5. 데이터 베이스 생성 / 삭제 / 맵핑
+5. 시퀄라이즈 라이브러리 설치
 
 ```zsh
+npm install sequelize
+npm install mysql2
+npx sequelize init
+```
+
+6. 데이터 베이스 config 구조/ 생성 / 삭제 / 맵핑
+
+```zsh
+   npx sequelize init
    npx sequelize db:create
    npx sequelize db:drop
    npx sequelize db:migrate
+   npx sequelize-cli
 ```
 
 ## 지켜야할 점
