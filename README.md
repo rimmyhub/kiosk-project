@@ -16,26 +16,36 @@ source ./src/git_init
 npm install
 ```
 
-ㅎ
-
 ## 작업 설치 프로그램
 
 1. npm Package 설치
+
+```zsh
    npm init -y
    npm install express jsonwebtoken cookie-parser
+```
 
 2. 프리티어 설치 / 실행
+
+```zsh
    npm i prettier -D
    npm run prettify
+```
 
 3. 노드몬 포트 설치 / 실행
+
+```zsh
    npm i dotenv
    npm run start
+```
 
 4. 데이터 베이스 생성 / 삭제 / 맵핑
+
+```zsh
    npx sequelize db:create
-   npx sequelize db:drop  
+   npx sequelize db:drop
    npx sequelize db:migrate
+```
 
 ## 지켜야할 점
 
