@@ -9,17 +9,21 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      User_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
       Item_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
       amount: {
         allowNull: false,
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       state: {
         allowNull: false,
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

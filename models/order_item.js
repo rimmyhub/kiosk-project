@@ -13,15 +13,20 @@ module.exports = (sequelize, DataTypes) => {
   }
   Order_item.init(
     {
-      order_item: {},
+      order_item: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
       Item_id: {
         type: DataTypes.INTEGER,
       },
       amount: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
       },
       state: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
       },
       createdAt: {
         allowNull: false,

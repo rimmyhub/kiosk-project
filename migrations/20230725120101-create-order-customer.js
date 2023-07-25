@@ -11,7 +11,7 @@ module.exports = {
       },
       state: {
         allowNull: false,
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

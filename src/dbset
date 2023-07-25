@@ -2,16 +2,20 @@
 npx sequelize db:create --env development
 
 # option (옵션)  
-npx sequelize model:generate --name Option --attributes extra_price:number,shot_price:number,hot:boolean 
+npx sequelize model:generate --name Option --attributes extra_price:integer,shot_price:integer,hot:boolean 
 
 # item (상품)
-npx sequelize model:generate --name Item --attributes Option_id:integer,name:string,price:number,type:ENUM,amount:number
+npx sequelize model:generate --name Item --attributes User_id:integer, Option_id:integer,name:string,price:integer,type:ENUM,amount:integer
 
 # order_item (주문 상품)
-npx sequelize model:generate --name Order_item --attributes Item_id:integer,amount:number,state:number
+npx sequelize model:generate --name Order_item --attributes Item_id:integer,amount:integer,state:integer
 
 # item_order_customer (주문한 고객)
-npx sequelize model:generate --name Item_order_customer --attributes Item_id:integer,Order_customer_id:integer,amount:number
+npx sequelize model:generate --name Item_order_customer --attributes Item_id:integer,Order_customer_id:integer,amount:integer
 
 # order_customer (주문한 고객)
-npx sequelize model:generate --name Order_customer --attributes state:number
+npx sequelize model:generate --name Order_customer --attributes state:integer
+
+# user (관리자)
+npx sequelize model:generate --name Owner --attributes
+email:string,password:string,name:string
