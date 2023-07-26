@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
       state: {
+        allowNull: false,
         type: DataTypes.INTEGER,
       },
       createdAt: {

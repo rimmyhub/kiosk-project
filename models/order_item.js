@@ -20,12 +20,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
       Item_id: {
+        allowNull: false,
         type: DataTypes.INTEGER,
       },
       amount: {
+        allowNull: false,
         type: DataTypes.INTEGER,
       },
       state: {
+        allowNull: false,
         type: DataTypes.INTEGER,
       },
       createdAt: {

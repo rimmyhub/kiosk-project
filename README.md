@@ -68,10 +68,11 @@ npx sequelize init
 | 개인정보 조회(고객)  | `[get]`    | '/mypage/clients'                          |
 | 개인정보 수정(고객)  | `[put]`    | '/mypage/clients'                          |
 | 비밀번호 수정(고객)  | `[put]`    | '/mypage/clients/password'                 |
-| 메뉴 조회            | `[get]`    | '/restaurant/:restaurant_id/menu'          |
-| 메뉴 등록            | `[post]`   | '/restaurant/:restaurant_id/menu'          |
-| 메뉴 수정            | `[put]`    | '/restaurant/:restaurant_id/menu/:menu_id' |
-| 메뉴 삭제            | `[delete]` | '/restaurant/:restaurant_id/menu/:menu_id' |
+| 상품 조회            | `[get]`    | '/item/'                                   |
+| 상품 등록            | `[post]`   | '/item/:item                               |
+|                      |
+| 상품 수정            | `[put]`    | '/restaurant/:restaurant_id/menu/:menu_id' |
+| 상품 삭제            | `[delete]` | '/restaurant/:restaurant_id/menu/:menu_id' |
 | 주문 하기            | `[post]`   | '/order'                                   |
 | 주문 조회(고객/사장) | `[get]`    | '/order/:client_id'                        |
 | 주문 받기(사장)      | `[patch]`  | 'order-receive/:order_id'                  |

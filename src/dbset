@@ -1,11 +1,11 @@
 # sequelize init 또는 db:drop 하고 난 뒤에 해당 source를 실행하면 됩니다.
 npx sequelize db:create --env development
 
-# option (옵션)  
-npx sequelize model:generate --name Option --attributes extra_price:integer,shot_price:integer,hot:boolean 
-
 # item (상품)
 npx sequelize model:generate --name Item --attributes User_id:integer, Option_id:integer,name:string,price:integer,type:ENUM,amount:integer
+
+# option (옵션)  
+npx sequelize model:generate --name Option --attributes extra_price:integer,shot_price:integer,hot:boolean 
 
 # order_item (주문 상품)
 npx sequelize model:generate --name Order_item --attributes Item_id:integer,amount:integer,state:integer
@@ -17,5 +17,4 @@ npx sequelize model:generate --name Item_order_customer --attributes Item_id:int
 npx sequelize model:generate --name Order_customer --attributes state:integer
 
 # user (관리자)
-npx sequelize model:generate --name Owner --attributes
-email:string,password:string,name:string
+npx sequelize model:generate --name Owner --attributes email:string,password:string,name:string
