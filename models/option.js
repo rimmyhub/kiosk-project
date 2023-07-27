@@ -9,6 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      this.hasMany(models.Item, {
+        sourceKey: 'option_id',
+        foreignKey: 'option_id',
+      });
     }
   }
   Option.init(
@@ -17,15 +22,15 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
       },
       extra_price: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
+        allowNull: true,
+        type: DataTypes.BIGINT,
       },
       shot_price: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
+        allowNull: true,
+        type: DataTypes.BIGINT,
       },
       hot: {
         allowNull: false,

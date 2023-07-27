@@ -9,6 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      this.hasMany(models.Item, {
+        sourceKey: 'owner_id',
+        foreignKey: 'owner_id',
+      });
     }
   }
   Owner.init(
@@ -17,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
       },
       email: {
         allowNull: false,
@@ -44,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'User',
+      modelName: 'Owner',
     }
   );
   return Owner;

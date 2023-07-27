@@ -1,20 +1,46 @@
 # sequelize init 또는 db:drop 하고 난 뒤에 해당 source를 실행하면 됩니다.
 npx sequelize db:create --env development
 
-# item (상품)
-npx sequelize model:generate --name Item --attributes User_id:integer, Option_id:integer,name:string,price:integer,type:ENUM,amount:integer
 
 # option (옵션)  
-npx sequelize model:generate --name Option --attributes extra_price:integer,shot_price:integer,hot:boolean 
+npx sequelize model:generate --name Option --attributes extra_price:BIGINT,shot_price:BIGINT,hot:BOOLEAN 
+
+
+# 옵션 db 추가
+INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (1, Null, Null, false, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+
+INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (2, Null, Null, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+
+INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (3, 1000, Null, false, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+
+INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (4, 1000, Null, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+
+INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (5, Null, 500, false, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+
+INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (6, Null, 500, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+
+INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (7, 1000, 500, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+
+
+
+# item (상품)
+npx sequelize model:generate --name Item --attributes Owner_id:BIGINT, Option_id:BIGINT,name:string,price:BIGINT,amount:BIGINT,type:ENUM
 
 # order_item (주문 상품)
-npx sequelize model:generate --name Order_item --attributes Item_id:integer,amount:integer,state:integer
+npx sequelize model:generate --name Order_item --attributes Item_id:BIGINT,amount:BIGINT,state:BIGINT
 
-# item_order_customer (주문한 고객)
-npx sequelize model:generate --name Item_order_customer --attributes Item_id:integer,Order_customer_id:integer,amount:integer
+# item_order_customer (고객 주문 관리)
+npx sequelize model:generate --name Item_order_customer --attributes Item_id:BIGINT,Order_customer_id:BIGINT,amount:BIGINT
 
-# order_customer (주문한 고객)
-npx sequelize model:generate --name Order_customer --attributes state:integer
+# order_customer (고객 주문 상태)
+npx sequelize model:generate --name Order_customer --attributes state:BOOLEAN
 
-# user (관리자)
+# Owner (관리자)
 npx sequelize model:generate --name Owner --attributes email:string,password:string,name:string

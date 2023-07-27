@@ -9,6 +9,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      this.belongsTo(models.Item, {
+        sourceKey: 'item_id',
+        foreignKey: 'item_id',
+        onDelete: 'CASCADE',
+      });
+
+      this.belongsTo(models.Order_customer, {
+        sourceKey: 'item_order_customer_id',
+        foreignKey: 'item_order_customer_id',
+        onDelete: 'CASCADE',
+      });
     }
   }
   Item_order_customer.init(
@@ -17,19 +29,28 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
       },
-      Item_id: {
+      item_id: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
+        references: {
+          model: 'Item',
+          key: 'item_id',
+        },
       },
-      Order_customer_id: {
+      order_customer_id: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
+        references: {
+          model: 'Order_customer',
+          key: 'order_customer_id',
+        },
       },
       amount: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
+        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,

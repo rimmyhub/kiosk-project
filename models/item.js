@@ -1,4 +1,4 @@
-'use strict';
+('use strict');
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Item extends Model {
@@ -9,6 +9,28 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      this.belongsTo(models.Owner, {
+        sourceKey: 'owner_id',
+        foreignKey: 'owner_id',
+        onDelete: 'CASCADE',
+      });
+
+      this.belongsTo(models.Option, {
+        sourceKey: 'option_id',
+        foreignKey: 'option_id',
+        onDelete: 'CASCADE',
+      });
+
+      this.hasOne(models.Order_item, {
+        sourceKey: 'item_id',
+        foreignKey: 'item_id',
+      });
+
+      this.hasMany(models.Item_order_customer, {
+        sourceKey: 'item_id',
+        foreignKey: 'item_id',
+      });
     }
   }
   Item.init(
@@ -17,11 +39,23 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
       },
-      Option_id: {
+      option_id: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
+        references: {
+          model: 'Option',
+          key: 'potion_id',
+        },
+      },
+      owner_id: {
+        allowNull: false,
+        type: DataTypes.BIGINT,
+        references: {
+          model: 'Owner',
+          key: 'owner_id',
+        },
       },
       name: {
         allowNull: false,
@@ -29,15 +63,17 @@ module.exports = (sequelize, DataTypes) => {
       },
       price: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
       },
       type: {
         allowNull: false,
         type: DataTypes.ENUM,
+        values: ['coffee', 'juice', 'food'],
       },
       amount: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
+        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,

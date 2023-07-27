@@ -7,23 +7,26 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
-      User_id: {
+      item_id: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-      },
-      Item_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
+        references: {
+          model: 'Items', // Items 모델을 참조합니다.
+          key: 'item_id', // Items 모델의 item_id 참조합니다.
+        },
+        onDelete: 'CASCADE', // 만약 Items 모델의 item_id 삭제되면, Items 모델의 데이터가 삭제됩니다.
       },
       amount: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
+        defaultValue: 0,
       },
       state: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
+        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,

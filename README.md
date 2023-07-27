@@ -32,7 +32,13 @@
    npm run start
 ```
 
-5. 시퀄라이즈 라이브러리 설치
+5. env 설치
+
+```zsh
+npm install dotenv
+```
+
+6. 시퀄라이즈 라이브러리 설치
 
 ```zsh
 npm install sequelize
@@ -40,7 +46,7 @@ npm install mysql2
 npx sequelize init
 ```
 
-6. 데이터 베이스 config 구조/ 생성 / 삭제 / 맵핑
+7. 데이터 베이스 config 구조/ 생성 / 삭제 / 맵핑
 
 ```zsh
    npx sequelize init
@@ -56,31 +62,21 @@ npx sequelize init
 
 ## Rest API
 
-| Content              | Method     | Path                                       |
-| -------------------- | ---------- | ------------------------------------------ |
-| 회원가입(고객)       | `[post]`   | '/signup/clients'                          |
-| 회원가입(사장)       | `[post]`   | '/signup/owners'                           |
-| 로그인(고객)         | `[post]`   | '/login/client'                            |
-| 로그인(사장)         | `[post]`   | '/login/owner'                             |
-| 개인정보 조회(사장)  | `[get]`    | '/mypage/owners'                           |
-| 개인정보 수정(사장)  | `[put]`    | '/mypage/owners'                           |
-| 비밀번호 수정(사장)  | `[put]`    | '/mypage/owners/password'                  |
-| 개인정보 조회(고객)  | `[get]`    | '/mypage/clients'                          |
-| 개인정보 수정(고객)  | `[put]`    | '/mypage/clients'                          |
-| 비밀번호 수정(고객)  | `[put]`    | '/mypage/clients/password'                 |
-| 상품 조회            | `[get]`    | '/item/'                                   |
-| 상품 등록            | `[post]`   | '/item/:item                               |
-|                      |
-| 상품 수정            | `[put]`    | '/restaurant/:restaurant_id/menu/:menu_id' |
-| 상품 삭제            | `[delete]` | '/restaurant/:restaurant_id/menu/:menu_id' |
-| 주문 하기            | `[post]`   | '/order'                                   |
-| 주문 조회(고객/사장) | `[get]`    | '/order/:client_id'                        |
-| 주문 받기(사장)      | `[patch]`  | 'order-receive/:order_id'                  |
-| 음식점 전체 조회     | `[get]`    | '/restaurant'                              |
-| 개별 음식점 조회     | `[get]`    | '/restaurant/:restaurant_id'               |
-| 음식점 수정          | `[put]`    | '/restaurant/:restaurant_id'               |
-| 음식점 삭제          | `[delete]` | '/restaurant/:restaurant_id'               |
-| 리뷰 조회            | `[get]`    | '/review/:restaurant_id'                   |
-| 리뷰 작성            | `[post]`   | '/review/:order_id'                        |
-| 리뷰 수정            | `[put]`    | '/review/:order_id'                        |
-| 리뷰 삭제            | `[delete]` | '/review/:order_id'                        |
+| Content             | Method     | Path                                           |
+| ------------------- | ---------- | ---------------------------------------------- |
+| 회원가입            | `[post]`   | '/signup/owners'                               |
+| 로그인              | `[post]`   | '/login/owners'                                |
+| 개인정보 조회       | `[get]`    | '/owners'                                      |
+| 개인정보 수정       | `[put]`    | '/owners'                                      |
+| 비밀번호 수정       | `[put]`    | '/owners/password'                             |
+| 상품 전체 조회      | `[get]`    | '/items'                                       |
+| 상품 조회           | `[get]`    | '/items/:items'                                |
+| 상품 등록           | `[post]`   | '/items'                                       |
+| 상품 수정           | `[put]`    | '/items/:item_id'                              |
+| 상품 삭제           | `[delete]` | '/items/:item_id'                              |
+| 상품 발주           | `[post]`   | /order-item'                                   |
+| 상품 발주 상태 수정 | `[put]`    | '/order-item/:order-item_id'                   |
+| 주문 관리           | `[post]`   | '/item-order-customer'                         |
+| 주문 상태 수정      | `[put]`    | '/item-order-customer/:item-order-customer_id' |
+| 상품 옵션           | `[post]`   | '/option/:option_id'                           |
+| 상품 옵션 수정      | `[put]`    | '/option/:option_id'                           |

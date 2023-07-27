@@ -1,6 +1,9 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const itemRouter = require('./routes/item_router.js');
+const itemRouter = require('./routes/item.router');
+
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 const PORT = 3000;
@@ -8,7 +11,12 @@ const PORT = 3000;
 app.use(express.json());
 app.use(cookieParser());
 
-app.use('/', [itemRouter]);
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static('assets'));
+
+app.use('/', itemRouter);
 
 app.listen(PORT, () => {
   console.log(PORT, '포트 번호로 서버가 실행되었습니다.');
