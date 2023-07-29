@@ -44,3 +44,6 @@ npx sequelize model:generate --name Order_customer --attributes state:BOOLEAN
 
 # Owner (관리자)
 npx sequelize model:generate --name Owner --attributes email:string,password:string,name:string
+
+# 리프레쉬 토큰
+npx sequelize model:generate --name RefreshToken --attributes refreshToken:string,owner_id:BIGINT

@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Order_item.init(
     {
-      order_item: {
+      order_item_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,

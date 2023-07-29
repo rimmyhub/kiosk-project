@@ -38,6 +38,7 @@ module.exports = {
       type: {
         allowNull: false,
         type: Sequelize.ENUM,
+        // values: Object.values(itemType),
         values: ['coffee', 'juice', 'food'],
       },
       amount: {

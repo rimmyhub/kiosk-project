@@ -56,6 +56,12 @@ npx sequelize init
    npx sequelize-cli
 ```
 
+8. 비밀번호 해시화
+
+```zsh
+npm install bcrypt
+```
+
 ## 지켜야할 점
 
 - 에러처리는 컨트롤러에서 작성
@@ -74,8 +80,8 @@ npx sequelize init
 | 상품 등록           | `[post]`   | '/items'                                       |
 | 상품 수정           | `[put]`    | '/items/:item_id'                              |
 | 상품 삭제           | `[delete]` | '/items/:item_id'                              |
-| 상품 발주           | `[post]`   | /order-item'                                   |
-| 상품 발주 상태 수정 | `[put]`    | '/order-item/:order-item_id'                   |
+| 상품 발주           | `[post]`   | '/items/:item_id/order-items'                  |
+| 상품 발주 상태 수정 | `[put]`    | '/items/:item_id/order-items'                  |
 | 주문 관리           | `[post]`   | '/item-order-customer'                         |
 | 주문 상태 수정      | `[put]`    | '/item-order-customer/:item-order-customer_id' |
 | 상품 옵션           | `[post]`   | '/option/:option_id'                           |

@@ -68,6 +68,7 @@ module.exports = (sequelize, DataTypes) => {
       type: {
         allowNull: false,
         type: DataTypes.ENUM,
+        // values: Object.values(itemType),
         values: ['coffee', 'juice', 'food'],
       },
       amount: {
