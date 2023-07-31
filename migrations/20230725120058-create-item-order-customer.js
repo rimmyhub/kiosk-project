@@ -30,7 +30,14 @@ module.exports = {
       amount: {
         allowNull: false,
         type: Sequelize.BIGINT,
-        defaultValue: 0,
+      },
+      option: {
+        allowNull: false,
+        type: Sequelize.JSON,
+      },
+      price: {
+        allowNull: false,
+        type: Sequelize.BIGINT,
       },
       createdAt: {
         allowNull: false,

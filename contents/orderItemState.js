@@ -5,3 +5,10 @@
 // 	"COMPLETED": 2,
 // 	"CANCELED": 3
 // }
+
+// let orderState = [
+//   { id: 0, status: 'Ordered'},
+//   { id: 1, status: 'Pending'},
+//   { id: 2, status: 'Complete'},
+//   { id: 3, status: 'Canceled'},
+// ];

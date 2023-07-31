@@ -3,6 +3,7 @@ const OrderItemService = require('../services/order_item.service');
 class OrderItemController {
   orderItemService = new OrderItemService();
 
+  // 상품 발주
   createOrderItem = async (req, res) => {
     try {
       const { owner_id } = res.locals.owner;
@@ -22,13 +23,14 @@ class OrderItemController {
       if (!orderItem)
         return res.status(400).json({ message: '발주된 상품 정보 등록을 실패하였습니다' });
 
-      res.status(200).json({ message: '발주된 상품 정보를 등록었습니다' });
+      res.status(200).json({ message: '발주된 상품 정보를 등록하였습니다' });
     } catch (err) {
       console.error(err.name, ':', err.message);
       return res.status(400).json({ message: `${err.message}` });
     }
   };
 
+  // 상품 발주 수정
   modifyOrderItem = async (req, res) => {
     try {
       const { owner_id } = res.locals.owner;
@@ -39,8 +41,27 @@ class OrderItemController {
       if (!orderItem) return res.status(404).json({ message: '상품 발주 정보가 없습니다' });
 
       await this.orderItemService.modifyOrderItem(order_item_id, owner_id, amount, state);
-      console.log(owner_id);
       res.status(200).json({ message: '발주된 상품 정보를 수정하였습니다' });
+    } catch (err) {
+      console.error(err.name, ':', err.message);
+      return res.status(400).json({ message: `${err.message}` });
+    }
+  };
+
+  // 상품 상태 변경
+  createStateTransaction = async (req, res) => {
+    try {
+      const { amount, state } = req.body;
+      const { order_item_id, newStat } = req.params;
+
+      const createStateTransaction = await this.orderItemService.createStateTransaction(
+        order_item_id,
+        amount,
+        state,
+        newStat
+      );
+
+      res.status(200).json(createStateTransaction);
     } catch (err) {
       console.error(err.name, ':', err.message);
       return res.status(400).json({ message: `${err.message}` });

@@ -50,7 +50,14 @@ module.exports = (sequelize, DataTypes) => {
       amount: {
         allowNull: false,
         type: DataTypes.BIGINT,
-        defaultValue: 0,
+      },
+      option: {
+        allowNull: false,
+        type: DataTypes.JSON,
+      },
+      price: {
+        allowNull: false,
+        type: DataTypes.BIGINT,
       },
       createdAt: {
         allowNull: false,

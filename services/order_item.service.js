@@ -20,7 +20,7 @@ class OrderItemService {
     return findOrderItem;
   };
 
-  // 상품 발주 상태 수정
+  // 상품 발주 수정
   modifyOrderItem = async (order_item_id, owner_id, amount, state) => {
     const modifyOrderItem = await this.orderItemRepository.modifyOrderItem(
       order_item_id,
@@ -29,6 +29,22 @@ class OrderItemService {
       state
     );
     return modifyOrderItem;
+  };
+
+  // 상품 상태 변경
+  createStateTransaction = async (order_item_id, amount, state, newStat) => {
+    try {
+      const createStateTransaction = await this.orderItemRepository.createStateTransaction(
+        order_item_id,
+        amount,
+        state,
+        newStat
+      );
+      return createStateTransaction;
+    } catch (err) {
+      console.error(err.message);
+      throw new Error(err.message);
+    }
   };
 }
 module.exports = OrderItemService;

@@ -9,6 +9,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.BIGINT,
       },
+      owner_id: {
+        allowNull: false,
+        type: Sequelize.BIGINT,
+        references: {
+          model: 'Owners',
+          key: 'owner_id',
+        },
+        onDelete: 'CASCADE',
+      },
       item_id: {
         allowNull: false,
         type: Sequelize.BIGINT,
@@ -21,12 +30,11 @@ module.exports = {
       amount: {
         allowNull: false,
         type: Sequelize.BIGINT,
-        defaultValue: 0,
       },
       state: {
         allowNull: false,
-        type: Sequelize.BIGINT,
-        defaultValue: 0,
+        type: Sequelize.ENUM('Ordered', 'Pending', 'Completed', 'Canceled'),
+        defaultValue: 'Ordered',
       },
       createdAt: {
         allowNull: false,

@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('RefreshTokens', {
-      uuid: {
+      refreshToken_id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,

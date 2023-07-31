@@ -3,41 +3,44 @@ npx sequelize db:create --env development
 
 
 # option (옵션)  
-npx sequelize model:generate --name Option --attributes extra_price:BIGINT,shot_price:BIGINT,hot:BOOLEAN 
+npx sequelize model:generate --name Option --attributes owner_id:BIGINT, extra_price:BIGINT,shot_price:BIGINT,hot:BOOLEAN 
 
 
 # 옵션 db 추가
-INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
-VALUES (1, Null, Null, false, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+INSERT INTO kiosk_sequelize.Options (option_id, owner_id, extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (1, 1, Null, Null, false, '2023-07-24 10:25:25','2023-07-24 10:25:25');
 
-INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
-VALUES (2, Null, Null, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+INSERT INTO kiosk_sequelize.Options (option_id, owner_id, extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (2, 1, Null, Null, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
 
-INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
-VALUES (3, 1000, Null, false, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+INSERT INTO kiosk_sequelize.Options (option_id, owner_id, extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (3, 1, 1000, Null, false, '2023-07-24 10:25:25','2023-07-24 10:25:25');
 
-INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
-VALUES (4, 1000, Null, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+INSERT INTO kiosk_sequelize.Options (option_id, owner_id,  extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (4, 1, 1000, Null, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
 
-INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
-VALUES (5, Null, 500, false, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+INSERT INTO kiosk_sequelize.Options (option_id, owner_id,  extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (5, 1, Null, 500, false, '2023-07-24 10:25:25','2023-07-24 10:25:25');
 
-INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
-VALUES (6, Null, 500, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+INSERT INTO kiosk_sequelize.Options (option_id, owner_id,  extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (6, 1, Null, 500, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
 
-INSERT INTO kiosk_sequelize.Options (option_id, extra_price, shot_price, hot, createdAt, updatedAt)
-VALUES (7, 1000, 500, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+INSERT INTO kiosk_sequelize.Options (option_id, owner_id,  extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (7, 1, 1000, 500, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
+
+INSERT INTO kiosk_sequelize.Options (option_id,owner_id,  extra_price, shot_price, hot, createdAt, updatedAt)
+VALUES (7, 1,1000, 500, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
 
 
 
 # item (상품)
-npx sequelize model:generate --name Item --attributes Owner_id:BIGINT, Option_id:BIGINT,name:string,price:BIGINT,amount:BIGINT,type:ENUM
+npx sequelize model:generate --name Item --attributes owner_id:BIGINT, option_id:BIGINT,name:string,price:BIGINT,amount:BIGINT,type:ENUM
 
 # order_item (주문 상품)
-npx sequelize model:generate --name Order_item --attributes Item_id:BIGINT,amount:BIGINT,state:BIGINT
+npx sequelize model:generate --name Order_item --attributes owner_id:BIGINT, item_id:BIGINT,amount:BIGINT,state:BIGINT
 
 # item_order_customer (고객 주문 관리)
-npx sequelize model:generate --name Item_order_customer --attributes Item_id:BIGINT,Order_customer_id:BIGINT,amount:BIGINT
+npx sequelize model:generate --name Item_order_customer --attributes item_id:BIGINT,order_customer_id:BIGINT,amount:BIGINT, option:json, price:BIGINT
 
 # order_customer (고객 주문 상태)
 npx sequelize model:generate --name Order_customer --attributes state:BOOLEAN
@@ -47,3 +50,6 @@ npx sequelize model:generate --name Owner --attributes email:string,password:str
 
 # 리프레쉬 토큰
 npx sequelize model:generate --name RefreshToken --attributes refreshToken:string,owner_id:BIGINT
+
+# state 상태 값을 저장해야함
+npx sequelize model:generate --name StateTransaction --attributes order_item_id:BIGINT,beforeState:BIGINT,afterState:BIGINT

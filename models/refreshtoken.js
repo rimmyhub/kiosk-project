@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   RefreshToken.init(
     {
-      uuid: {
+      refreshToken_id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,

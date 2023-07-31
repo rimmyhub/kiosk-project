@@ -62,27 +62,33 @@ npx sequelize init
 npm install bcrypt
 ```
 
+9. SQLite
+
+```zsh
+npm install sqlite3
+```
+
 ## 지켜야할 점
 
 - 에러처리는 컨트롤러에서 작성
 
 ## Rest API
 
-| Content             | Method     | Path                                           |
-| ------------------- | ---------- | ---------------------------------------------- |
-| 회원가입            | `[post]`   | '/signup/owners'                               |
-| 로그인              | `[post]`   | '/login/owners'                                |
-| 개인정보 조회       | `[get]`    | '/owners'                                      |
-| 개인정보 수정       | `[put]`    | '/owners'                                      |
-| 비밀번호 수정       | `[put]`    | '/owners/password'                             |
-| 상품 전체 조회      | `[get]`    | '/items'                                       |
-| 상품 조회           | `[get]`    | '/items/:items'                                |
-| 상품 등록           | `[post]`   | '/items'                                       |
-| 상품 수정           | `[put]`    | '/items/:item_id'                              |
-| 상품 삭제           | `[delete]` | '/items/:item_id'                              |
-| 상품 발주           | `[post]`   | '/items/:item_id/order-items'                  |
-| 상품 발주 상태 수정 | `[put]`    | '/items/:item_id/order-items'                  |
-| 주문 관리           | `[post]`   | '/item-order-customer'                         |
-| 주문 상태 수정      | `[put]`    | '/item-order-customer/:item-order-customer_id' |
-| 상품 옵션           | `[post]`   | '/option/:option_id'                           |
-| 상품 옵션 수정      | `[put]`    | '/option/:option_id'                           |
+| Content             | Method     | Path                                 |
+| ------------------- | ---------- | ------------------------------------ |
+| 회원가입            | `[post]`   | '/signup/owners'                     |
+| 로그인              | `[post]`   | '/login/owners'                      |
+| 개인정보 조회       | `[get]`    | '/owners'                            |
+| 개인정보 수정       | `[put]`    | '/owners'                            |
+| 비밀번호 수정       | `[put]`    | '/owners/password'                   |
+| 상품 전체 조회      | `[get]`    | '/items'                             |
+| 상품 조회           | `[get]`    | '/items/:items'                      |
+| 상품 등록           | `[post]`   | '/items'                             |
+| 상품 수정           | `[put]`    | '/items/:item_id'                    |
+| 상품 삭제           | `[delete]` | '/items/:item_id'                    |
+| 상품 발주           | `[post]`   | '/items/:item_id/order-items'        |
+| 상품 발주 상태 수정 | `[put]`    | '/items/:item_id/order-items'        |
+| 주문 관리           | `[post]`   | '/order-customer'                    |
+| 주문 상태 수정      | `[put]`    | '/order-customer/:order-customer_id' |
+| 상품 옵션           | `[post]`   | '/option/:option_id'                 |
+| 상품 옵션 수정      | `[put]`    | '/option/:option_id'                 |

@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'option_id',
         foreignKey: 'option_id',
       });
+      this.belongsTo(models.Owner, {
+        sourceKey: 'owner_id',
+        foreignKey: 'owner_id',
+      });
     }
   }
   Option.init(
@@ -23,6 +27,14 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.BIGINT,
+      },
+      owner_id: {
+        allowNull: false,
+        type: DataTypes.BIGINT,
+        references: {
+          model: 'Owner',
+          key: 'owner_id',
+        },
       },
       extra_price: {
         allowNull: true,

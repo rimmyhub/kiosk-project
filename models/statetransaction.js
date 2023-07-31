@@ -1,7 +1,7 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Owner extends Model {
+  class StateTransaction extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -10,39 +10,29 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
 
-      this.hasMany(models.Item, {
-        sourceKey: 'owner_id',
-        foreignKey: 'owner_id',
-      });
-      this.hasMany(models.Order_item, {
-        sourceKey: 'owner_id',
-        foreignKey: 'owner_id',
-      });
-      this.hasMany(models.Option, {
-        sourceKey: 'owner_id',
-        foreignKey: 'owner_id',
+      this.belongsTo(models.Order_item, {
+        sourceKey: 'order_item_id',
+        foreignKey: 'order_item_id',
+        onDelete: 'CASCADE',
       });
     }
   }
-  Owner.init(
+  StateTransaction.init(
     {
-      owner_id: {
+      StateTransactions_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.BIGINT,
       },
-      email: {
-        allowNull: false,
-        type: DataTypes.STRING,
+      order_item_id: {
+        type: DataTypes.BIGINT,
       },
-      password: {
-        allowNull: false,
-        type: DataTypes.STRING,
+      beforeState: {
+        type: DataTypes.BIGINT,
       },
-      name: {
-        allowNull: false,
-        type: DataTypes.STRING,
+      afterState: {
+        type: DataTypes.BIGINT,
       },
       createdAt: {
         allowNull: false,
@@ -57,8 +47,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Owner',
+      modelName: 'StateTransaction',
     }
   );
-  return Owner;
+  return StateTransaction;
 };

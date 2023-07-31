@@ -15,6 +15,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'item_id',
         onDelete: 'CASCADE',
       });
+      this.belongsTo(models.Owner, {
+        sourceKey: 'owner_id',
+        foreignKey: 'owner_id',
+        onDelete: 'CASCADE',
+      });
+      this.hasMany(models.StateTransaction, {
+        sourceKey: 'order_item_id',
+        foreignKey: 'order_item_id',
+        onDelete: 'CASCADE',
+      });
     }
   }
   Order_item.init(
@@ -24,6 +34,14 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.BIGINT,
+      },
+      owner_id: {
+        allowNull: false,
+        type: DataTypes.BIGINT,
+        references: {
+          model: 'Owner',
+          key: 'owner_id',
+        },
       },
       item_id: {
         allowNull: false,
@@ -36,12 +54,11 @@ module.exports = (sequelize, DataTypes) => {
       amount: {
         allowNull: false,
         type: DataTypes.BIGINT,
-        defaultValue: 0,
       },
       state: {
         allowNull: false,
-        type: DataTypes.BIGINT,
-        defaultValue: 0,
+        type: DataTypes.ENUM('Ordered', 'Pending', 'Completed', 'Canceled'),
+        defaultValue: 'Ordered',
       },
       createdAt: {
         allowNull: false,
