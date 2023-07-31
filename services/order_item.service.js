@@ -20,25 +20,25 @@ class OrderItemService {
     return findOrderItem;
   };
 
-  // 상품 발주 수정
-  modifyOrderItem = async (order_item_id, owner_id, amount, state) => {
-    const modifyOrderItem = await this.orderItemRepository.modifyOrderItem(
-      order_item_id,
-      owner_id,
-      amount,
-      state
-    );
-    return modifyOrderItem;
-  };
+  // // 상품 발주 수정
+  // modifyOrderItem = async (order_item_id, owner_id, amount, state) => {
+  //   const modifyOrderItem = await this.orderItemRepository.modifyOrderItem(
+  //     order_item_id,
+  //     owner_id,
+  //     amount,
+  //     state
+  //   );
+  //   return modifyOrderItem;
+  // };
 
   // 상품 상태 변경
-  createStateTransaction = async (order_item_id, amount, state, newStat) => {
+  createStateTransaction = async (item_id, order_item_id, amount, state) => {
     try {
       const createStateTransaction = await this.orderItemRepository.createStateTransaction(
+        item_id,
         order_item_id,
         amount,
-        state,
-        newStat
+        state
       );
       return createStateTransaction;
     } catch (err) {

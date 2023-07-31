@@ -21,6 +21,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'item_order_customer_id',
         onDelete: 'CASCADE',
       });
+
+      this.belongsTo(models.Option, {
+        sourceKey: 'option_id',
+        foreignKey: 'option_id',
+        onDelete: 'CASCADE',
+      });
     }
   }
   Item_order_customer.init(
@@ -47,13 +53,17 @@ module.exports = (sequelize, DataTypes) => {
           key: 'order_customer_id',
         },
       },
+      option_id: {
+        allowNull: false,
+        type: DataTypes.BIGINT,
+        references: {
+          model: 'Option',
+          key: 'option_id',
+        },
+      },
       amount: {
         allowNull: false,
         type: DataTypes.BIGINT,
-      },
-      option: {
-        allowNull: false,
-        type: DataTypes.JSON,
       },
       price: {
         allowNull: false,

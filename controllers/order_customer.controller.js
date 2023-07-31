@@ -15,10 +15,10 @@ class OrderCustomerController {
     }
   };
 
-  modifyOrderCustomer = async (req, res) => {
-    const { order_customer_id } = req.params;
-    const { state } = req.body;
-  };
+  // modifyOrderCustomer = async (req, res) => {
+  //   const { order_customer_id } = req.params;
+  //   const { state } = req.body;
+  // };
 }
 
 module.exports = OrderCustomerController;

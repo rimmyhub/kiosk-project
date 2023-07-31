@@ -16,15 +16,15 @@ OrderItemRouter.post(
 );
 
 // 상품 발주 수정
+// OrderItemRouter.put(
+//   '/items/:item_id/order-items/:order_item_id',
+//   auth.verifyAccessToken,
+//   orderItemController.modifyOrderItem
+// );
+
+// 상품 발주 상태 수정 ** 나중에 경로 다르게 바꾸기
 OrderItemRouter.put(
   '/items/:item_id/order-items/:order_item_id',
-  auth.verifyAccessToken,
-  orderItemController.modifyOrderItem
-);
-
-// 상품 발주 상태 수정
-OrderItemRouter.put(
-  '/order-state/:order_item_id/:newStat',
   orderItemController.createStateTransaction
 );
 

@@ -14,9 +14,15 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'option_id',
         foreignKey: 'option_id',
       });
+
       this.belongsTo(models.Owner, {
         sourceKey: 'owner_id',
         foreignKey: 'owner_id',
+      });
+
+      this.hasMany(models.Item_order_customer, {
+        sourceKey: 'option_id',
+        foreignKey: 'option_id',
       });
     }
   }

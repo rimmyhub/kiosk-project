@@ -20,11 +20,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'owner_id',
         onDelete: 'CASCADE',
       });
-      this.hasMany(models.StateTransaction, {
-        sourceKey: 'order_item_id',
-        foreignKey: 'order_item_id',
-        onDelete: 'CASCADE',
-      });
     }
   }
   Order_item.init(
@@ -57,8 +52,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       state: {
         allowNull: false,
-        type: DataTypes.ENUM('Ordered', 'Pending', 'Completed', 'Canceled'),
-        defaultValue: 'Ordered',
+        type: DataTypes.ENUM('ordered', 'pending', 'completed', 'canceled'),
+        defaultValue: 'ordered',
       },
       createdAt: {
         allowNull: false,

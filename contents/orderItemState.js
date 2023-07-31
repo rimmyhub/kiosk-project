@@ -7,8 +7,8 @@
 // }
 
 // let orderState = [
-//   { id: 0, status: 'Ordered'},
-//   { id: 1, status: 'Pending'},
-//   { id: 2, status: 'Complete'},
-//   { id: 3, status: 'Canceled'},
+//   { id: 0, status: 'ordered'},
+//   { id: 1, status: 'pending'},
+//   { id: 2, status: 'complete'},
+//   { id: 3, status: 'canceled'},
 // ];

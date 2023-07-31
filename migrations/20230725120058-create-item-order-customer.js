@@ -9,31 +9,36 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.BIGINT,
       },
-      Item_id: {
+      item_id: {
         allowNull: false,
         type: Sequelize.BIGINT,
         references: {
-          model: 'Items', // Items 모델을 참조합니다.
-          key: 'item_id', // Items 모델의 item_id 참조합니다.
+          model: 'Items',
+          key: 'item_id',
         },
-        onDelete: 'CASCADE', // 만약 Items 모델의 item_id 삭제되면, Items 모델의 데이터가 삭제됩니다.
+        onDelete: 'CASCADE',
       },
-      Order_customer_id: {
+      order_customer_id: {
         allowNull: false,
         type: Sequelize.BIGINT,
         references: {
-          model: 'Order_customers', // order_customers 모델을 참조합니다.
-          key: 'order_customer_id', // order_customers 모델의 order_customer_id 참조합니다.
+          model: 'Order_customers',
+          key: 'order_customer_id',
         },
-        onDelete: 'CASCADE', // 만약 Items 모델의 order_customer_id 삭제되면, order_customers 모델의 데이터가 삭제됩니다.
+        onDelete: 'CASCADE',
+      },
+      option_id: {
+        allowNull: false,
+        type: Sequelize.BIGINT,
+        references: {
+          model: 'Options',
+          key: 'option_id',
+        },
+        onDelete: 'CASCADE',
       },
       amount: {
         allowNull: false,
         type: Sequelize.BIGINT,
-      },
-      option: {
-        allowNull: false,
-        type: Sequelize.JSON,
       },
       price: {
         allowNull: false,

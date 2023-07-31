@@ -33,8 +33,8 @@ module.exports = {
       },
       state: {
         allowNull: false,
-        type: Sequelize.ENUM('Ordered', 'Pending', 'Completed', 'Canceled'),
-        defaultValue: 'Ordered',
+        type: Sequelize.ENUM('ordered', 'pending', 'completed', 'canceled'),
+        defaultValue: 'ordered',
       },
       createdAt: {
         allowNull: false,

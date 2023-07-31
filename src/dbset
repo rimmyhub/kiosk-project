@@ -28,11 +28,6 @@ VALUES (6, 1, Null, 500, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
 INSERT INTO kiosk_sequelize.Options (option_id, owner_id,  extra_price, shot_price, hot, createdAt, updatedAt)
 VALUES (7, 1, 1000, 500, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
 
-INSERT INTO kiosk_sequelize.Options (option_id,owner_id,  extra_price, shot_price, hot, createdAt, updatedAt)
-VALUES (7, 1,1000, 500, true, '2023-07-24 10:25:25','2023-07-24 10:25:25');
-
-
-
 # item (상품)
 npx sequelize model:generate --name Item --attributes owner_id:BIGINT, option_id:BIGINT,name:string,price:BIGINT,amount:BIGINT,type:ENUM
 

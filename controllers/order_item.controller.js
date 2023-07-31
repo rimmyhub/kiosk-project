@@ -52,14 +52,16 @@ class OrderItemController {
   createStateTransaction = async (req, res) => {
     try {
       const { amount, state } = req.body;
-      const { order_item_id, newStat } = req.params;
+      const { item_id, order_item_id } = req.params;
 
       const createStateTransaction = await this.orderItemService.createStateTransaction(
+        item_id,
         order_item_id,
         amount,
-        state,
-        newStat
+        state
       );
+      if (!createStateTransaction)
+        return res.status(404).json({ message: '주문 항목을 찾을 수 없습니다' });
 
       res.status(200).json(createStateTransaction);
     } catch (err) {
