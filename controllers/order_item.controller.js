@@ -11,7 +11,6 @@ class OrderItemController {
       const { amount, state } = req.body;
 
       if (!item_id) return res.status(400).json({ message: '상품이 존재하지 않습니다' });
-      console.log(item_id);
 
       const orderItem = await this.orderItemService.createOrderItem(
         owner_id,
@@ -30,25 +29,7 @@ class OrderItemController {
     }
   };
 
-  // 상품 발주 수정
-  modifyOrderItem = async (req, res) => {
-    try {
-      const { owner_id } = res.locals.owner;
-      const { amount, state } = req.body;
-      const { order_item_id } = req.params;
-      const orderItem = await this.orderItemService.findOrderItemById(order_item_id);
-
-      if (!orderItem) return res.status(404).json({ message: '상품 발주 정보가 없습니다' });
-
-      await this.orderItemService.modifyOrderItem(order_item_id, owner_id, amount, state);
-      res.status(200).json({ message: '발주된 상품 정보를 수정하였습니다' });
-    } catch (err) {
-      console.error(err.name, ':', err.message);
-      return res.status(400).json({ message: `${err.message}` });
-    }
-  };
-
-  // 상품 상태 변경
+  // 발주 상품 상태 변경
   createStateTransaction = async (req, res) => {
     try {
       const { amount, state } = req.body;

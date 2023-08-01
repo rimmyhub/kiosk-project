@@ -10,7 +10,7 @@ class OrderCustomerController {
       const orderCustomer = await this.orderCustomerService.createOrderCustomer(state);
 
       if (!orderCustomer) {
-        return res.status(400).json({ message: '주문한 고객 정보가 없습니다' });
+        return res.status(400).json({ message: '주문 등록을 실패하였습니다' });
       }
 
       return res.status(200).json({ message: '주문이 완료되었습니다' });

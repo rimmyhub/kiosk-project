@@ -4,8 +4,8 @@ const itemRouter = require('./routes/item.router');
 const ownerRouter = require('./routes/owner.router');
 const orderItemRouter = require('./routes/order_item.router');
 const orderCustomerRouter = require('./routes/order_customer.router');
-
 const itemOrderCustomerRouter = require('./routes/item_order_customer.router');
+const optionRouter = require('./routes/option.router');
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -27,6 +27,7 @@ app.use('/', [
   orderItemRouter,
   orderCustomerRouter,
   itemOrderCustomerRouter,
+  optionRouter,
 ]);
 
 app.listen(PORT, () => {

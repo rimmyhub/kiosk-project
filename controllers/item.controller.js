@@ -31,6 +31,7 @@ class ItemController {
     }
   };
 
+  // 상품 발주
   createItem = async (req, res) => {
     try {
       const { owner_id } = res.locals.owner;
