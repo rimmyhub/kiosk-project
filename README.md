@@ -68,6 +68,12 @@ npm install bcrypt
 npm install sqlite3
 ```
 
+10. nodemailer
+
+```zsh
+npm install nodemailer
+```
+
 ## 지켜야할 점
 
 - 에러처리는 컨트롤러에서 작성

@@ -1,5 +1,6 @@
 const AuthMiddleware = require('../middleware/auth.middleware');
 const OwnerService = require('../services/owner.service');
+const VerificationEmail = require('../assets/nodemailer');
 const bcrypt = require('bcrypt');
 
 class OwnerController {
@@ -25,6 +26,7 @@ class OwnerController {
     }
   };
 
+  // 관리자 로그인
   loginOwner = async (req, res) => {
     try {
       const { email, password } = req.body;
@@ -53,6 +55,22 @@ class OwnerController {
       res.cookie('refreshToken', refreshToken);
 
       res.status(200).json({ message: '로그인 되었습니다' });
+    } catch (err) {
+      console.error(err.name, ':', err.message);
+      return res.status(400).json({ message: `${err.message}` });
+    }
+  };
+
+  // 관리자 이메일 인증
+  sendVerificationEmail = async (req, res) => {
+    try {
+      const { email } = req.body;
+
+      const verificationEmail = new VerificationEmail();
+      const randomNumber = await verificationEmail.sandEmail(email);
+      req.session.verificationCode = randomNumber;
+
+      res.status(200).json({ message: '인증 메일이 전송 되었습니다' });
     } catch (err) {
       console.error(err.name, ':', err.message);
       return res.status(400).json({ message: `${err.message}` });
