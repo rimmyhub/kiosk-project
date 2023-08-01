@@ -1,4 +1,4 @@
-const { Item_order_customer, Option } = require('../models');
+const { Item_order_customer, Option, Order_customer, Item } = require('../models');
 
 class ItemOrderCustomerRepository {
   // 고객 상품 주문
@@ -33,9 +33,6 @@ class ItemOrderCustomerRepository {
       return null;
     }
   };
-
-  // 고객 상품 주문
-  modifyItemOrderCustomer = async (item_order_customer_id) => {};
 }
 
 module.exports = ItemOrderCustomerRepository;

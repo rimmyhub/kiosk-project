@@ -38,7 +38,6 @@ class OrderItemRepository {
     });
 
     const item = await Item.findByPk(orderItem.item_id);
-
     const currentStock = await Item.findOne({ where: { item_id } });
 
     if (amount > currentStock.amount && state === 'canceled') {

@@ -14,13 +14,6 @@ class ItemOrderCustomerService {
     );
     return itemOrderCustomer;
   };
-
-  modifyItemOrderCustomer = async (item_order_customer_id) => {
-    const itemOrderCustomer = await this.itemOrderCustomerRepository.modifyItemOrderCustomer(
-      item_order_customer_id
-    );
-    return itemOrderCustomer;
-  };
 }
 
 module.exports = ItemOrderCustomerService;

@@ -4,13 +4,13 @@ const orderCustomerRouter = express.Router();
 
 const orderCustomerController = new OrderCustomerController();
 
-// 상품 주문
-orderCustomerRouter.post('/order_customer', orderCustomerController.createOrderCustomer);
+// 고객 상품 주문 등록
+orderCustomerRouter.post('/order-customer', orderCustomerController.createOrderCustomer);
 
-// // 상품 주문 수정
-// orderCustomerRouter.put(
-//   '/order_customer/:order_customer',
-//   orderCustomerController.modifyOrderCustomer
-// );
+// 상품 주문 수정
+orderCustomerRouter.put(
+  '/order-customer/:order_customer_id',
+  orderCustomerController.modifyOrderCustomer
+);
 
 module.exports = orderCustomerRouter;

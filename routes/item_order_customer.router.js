@@ -11,9 +11,4 @@ itemOrderCustomerRouter.post(
   itemOrderCustomerController.createItemOrderCustomer
 );
 
-itemOrderCustomerRouter.put(
-  '/item-order-customer/:item_order_customer_id',
-  itemOrderCustomerController.modifyItemOrderCustomer
-);
-
 module.exports = itemOrderCustomerRouter;

@@ -26,25 +26,6 @@ class ItemOrderCustomerController {
       res.status(400).json({ message: `${err.message}` });
     }
   };
-
-  //고객 상품 수정
-  modifyItemOrderCustomer = async (req, res) => {
-    try {
-      const { item_order_customer_id } = req.params;
-
-      const itemOrderCustomer = await this.itemOrderCustomerService.modifyItemOrderCustomer(
-        item_order_customer_id
-      );
-
-      if (!itemOrderCustomer) {
-        return res.status(400).json({ message: '주문된 상품 정보가 없습니다' });
-      }
-      res.status(200).json({ message: '상품 주문이 완료되었습니다' });
-    } catch (err) {
-      console.error(err.name, ':', err.message);
-      res.status(400).json({ message: `${err.message}` });
-    }
-  };
 }
 
 module.exports = ItemOrderCustomerController;
